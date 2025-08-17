@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# build (only if you later add a bundler/transpiler)
+dist/
+build/
+
+# environment variables
+.env
+
+# logs
+npm-debug.log*
+logs
+*.log
+
+# misc
+.DS_Store
+
+# editor
+.vscode/
+.idea/
