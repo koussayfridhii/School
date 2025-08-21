@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
-import { useLogin } from '../hooks/useAuth.js';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRegister } from '../hooks/useAuth.js';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { mutate: login, isLoading, error } = useLogin();
+  const { mutate: register, isLoading, error, isSuccess } = useRegister();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username, password }, {
-      onSuccess: () => {
-        navigate('/dashboard'); // Redirect to dashboard on successful login
-      }
-    });
+    register({ username, password });
   };
+
+  if (isSuccess) {
+    return (
+        <div className="flex items-center justify-center min-h-screen">
+            <div className="p-8 bg-white dark:bg-gray-800 shadow-md rounded-lg text-center">
+                <h2 className="text-2xl font-bold mb-4">Registration Successful!</h2>
+                <p>You can now log in.</p>
+                <button onClick={() => navigate('/login')} className="mt-4 bg-primary-light dark:bg-primary-dark text-white p-2 rounded">
+                    Go to Login
+                </button>
+            </div>
+        </div>
+    )
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit} className="p-8 bg-white dark:bg-gray-800 shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
         <div className="mb-4">
           <label className="block mb-1">Username</label>
           <input
@@ -42,15 +52,12 @@ const LoginPage = () => {
           />
         </div>
         <button type="submit" disabled={isLoading} className="w-full bg-primary-light dark:bg-primary-dark text-white p-2 rounded">
-          {isLoading ? 'Logging in...' : 'Login'}
+          {isLoading ? 'Signing up...' : 'Sign Up'}
         </button>
         {error && <p className="text-red-500 mt-4">{error.response?.data?.message || 'An error occurred'}</p>}
-        <p className="mt-4 text-center">
-          Don't have an account? <Link to="/signup" className="text-primary-light dark:text-primary-dark hover:underline">Sign Up</Link>
-        </p>
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
