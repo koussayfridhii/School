@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./back
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./back:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - DATABASE_URL=mongodb://mongodb:27017/al-nasser-school
+      - JWT_SECRET=your-jwt-secret
+      - JWT_REFRESH_SECRET=your-jwt-refresh-secret
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" # Vite dev server runs on 3000
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
