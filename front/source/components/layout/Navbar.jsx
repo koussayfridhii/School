@@ -3,7 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../store/themeSlice';
 import { setLanguage } from '../../store/languageSlice';
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { selectAccessToken, clearCredentials } from '../../store/authSlice';
+import { FiMenu, FiX, FiSun, FiMoon, FiLogOut, FiLayout } from 'react-icons/fi';
 import { FaGlobe } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -11,6 +12,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const { theme } = useSelector((state) => state.theme);
   const { language } = useSelector((state) => state.language);
+  const accessToken = useSelector(selectAccessToken);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langDropdownRef = useRef(null);
@@ -31,6 +33,10 @@ const Navbar = () => {
   const handleLangChange = (lang) => {
     dispatch(setLanguage(lang));
     setIsLangOpen(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(clearCredentials());
   };
 
   useEffect(() => {
@@ -77,6 +83,22 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-3">
+            {accessToken ? (
+              <>
+                <NavLink to="/dashboard" className="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                  <FiLayout size={20} />
+                </NavLink>
+                <button onClick={handleLogout} className="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                  <FiLogOut size={20} />
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" className="px-3 py-2 text-text-light dark:text-text-dark hover:text-brand dark:hover:text-brand-light rounded-md text-sm font-medium transition-colors">
+                  Login
+                </NavLink>
+              </>
+            )}
             {/* Theme Toggle */}
             <button onClick={() => dispatch(toggleTheme())} className="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <AnimatePresence mode="wait">
@@ -145,6 +167,18 @@ const Navbar = () => {
                   {link.name[currentLanguage]}
                 </NavLink>
               ))}
+              <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+              {accessToken ? (
+                <>
+                  <NavLink to="/dashboard" className="block px-3 py-2 text-base font-medium text-text-light dark:text-text-dark hover:text-brand dark:hover:text-brand-light rounded-md">Dashboard</NavLink>
+                  <a onClick={handleLogout} className="block px-3 py-2 text-base font-medium text-text-light dark:text-text-dark hover:text-brand dark:hover:text-brand-light rounded-md cursor-pointer">Logout</a>
+                </>
+              ) : (
+                <>
+                  <NavLink to="/login" className="block px-3 py-2 text-base font-medium text-text-light dark:text-text-dark hover:text-brand dark:hover:text-brand-light rounded-md">Login</NavLink>
+                  <NavLink to="/signup" className="block px-3 py-2 text-base font-medium text-text-light dark:text-text-dark hover:text-brand dark:hover:text-brand-light rounded-md">Sign Up</NavLink>
+                </>
+              )}
             </div>
           </motion.div>
         )}

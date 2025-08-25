@@ -23,6 +23,10 @@ const SectionLayout = ({ title, children }) => (
 );
 
 import HomePage from './pages/home/HomePage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import Dashboard from './pages/Dashboard';
+import Protect from './components/Protect';
 
 // Page Components (Placeholders)
 import OurStory from './pages/about/OurStory';
@@ -119,6 +123,18 @@ function App() {
 
           <Route path="contact" element={<ContactUs />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
+
+          {/* Auth Routes */}
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignUpPage />} />
+          <Route
+            path="dashboard"
+            element={
+              <Protect>
+                <Dashboard />
+              </Protect>
+            }
+          />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
