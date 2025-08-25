@@ -8,7 +8,7 @@ export default defineConfig({
   base: "/",
   resolve: {
     alias: {
-      "@": "/src", // This will point '@' to the src folder
+      "@": "/source", // This will point '@' to the source folder
     },
   },
   server: {
