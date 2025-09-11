@@ -4,22 +4,20 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const Campus = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/campus/virtual-tour', text: { ar: 'جولة افتراضية', fr: 'Visite virtuelle', en: 'Virtual Tour' } },
+    { to: '/campus/facilities', text: { ar: 'نظرة عامة على المرافق', fr: 'Aperçu des installations', en: 'Facilities Overview' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'الحرم الجامعي والمرافق' : currentLanguage === 'fr' ? 'Campus & Installations' : 'Campus & Facilities'}
+        subtitle={currentLanguage === 'ar' ? 'استكشف بيئتنا التعليمية الحديثة' : currentLanguage === 'fr' ? 'Explorez notre environnement d\'apprentissage moderne' : 'Explore our modern learning environment'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +44,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Campus;

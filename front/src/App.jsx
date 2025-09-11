@@ -1,68 +1,155 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAccessToken, clearCredentials } from './store/authSlice.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectLanguage } from './store/languageSlice';
+import { selectTheme } from './store/themeSlice';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+// Import Page Layouts
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
-import Dashboard from './pages/Dashboard.jsx';
+import Academics from './pages/Academics.jsx';
+import Admissions from './pages/Admissions.jsx';
+import Campus from './pages/Campus.jsx';
+import StudentsParents from './pages/StudentsParents.jsx';
+import FacultyStaff from './pages/FacultyStaff.jsx';
+import NewsEvents from './pages/NewsEvents.jsx';
+import ResourcesDownloads from './pages/ResourcesDownloads.jsx';
+import Alumni from './pages/Alumni.jsx';
+import Contact from './pages/Contact.jsx';
+
+// Import Sub-Pages
+import OurStory from './pages/About/OurStory.jsx';
+import VisionValues from './pages/About/VisionValues.jsx';
+import Leadership from './pages/About/Leadership.jsx';
+import Accreditations from './pages/About/Accreditations.jsx';
+import Curriculum from './pages/Academics/Curriculum.jsx';
+import Programs from './pages/Academics/Programs.jsx';
+import Calendar from './pages/Academics/Calendar.jsx';
+import Process from './pages/Admissions/Process.jsx';
+import Criteria from './pages/Admissions/Criteria.jsx';
+import Tuition from './pages/Admissions/Tuition.jsx';
+import Apply from './pages/Admissions/Apply.jsx';
+import VirtualTour from './pages/Campus/VirtualTour.jsx';
+import Facilities from './pages/Campus/Facilities.jsx';
+import Portal from './pages/StudentsParents/Portal.jsx';
+import ParentResources from './pages/StudentsParents/Resources.jsx';
+import PTA from './pages/StudentsParents/PTA.jsx';
+import Profiles from './pages/FacultyStaff/Profiles.jsx';
+import Careers from './pages/FacultyStaff/Careers.jsx';
+import News from './pages/NewsEvents/News.jsx';
+import EventCalendar from './pages/NewsEvents/EventCalendar.jsx';
+import Blog from './pages/NewsEvents/Blog.jsx';
+import Forms from './pages/ResourcesDownloads/Forms.jsx';
+import Policies from './pages/ResourcesDownloads/Policies.jsx';
+import Downloads from './pages/ResourcesDownloads/Downloads.jsx';
+import Network from './pages/Alumni/Network.jsx';
+import SuccessStories from './pages/Alumni/SuccessStories.jsx';
+import AlumniEvents from './pages/Alumni/Events.jsx';
+import Details from './pages/Contact/Details.jsx';
+import Map from './pages/Contact/Map.jsx';
+import Inquiry from './pages/Contact/Inquiry.jsx';
+
+// Auth pages
 import LoginPage from './pages/LoginPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
-import Protect from './components/Protect.jsx';
-import ThemeToggle from './components/ThemeToggle.jsx';
+
+import { useEffect } from 'react';
 
 function App() {
-  const accessToken = useSelector(selectAccessToken);
-  const dispatch = useDispatch();
+  const currentLanguage = useSelector(selectLanguage);
+  const theme = useSelector(selectTheme);
 
-  const handleLogout = () => {
-    dispatch(clearCredentials());
-    // In a real app, you might want to also call a logout endpoint on the backend
-  };
+  useEffect(() => {
+    document.documentElement.lang = currentLanguage;
+  }, [currentLanguage]);
 
   return (
     <Router>
-      <div className="bg-background-light dark:bg-background-dark min-h-screen text-text-light dark:text-text-dark">
-        <header className="bg-white dark:bg-gray-800 shadow-md">
-          <nav className="container mx-auto p-4 flex justify-between items-center">
-            <div className="text-lg font-bold">
-              <Link to="/">MyApp</Link>
-            </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <Link to="/" className="hover:text-primary-light dark:hover:text-primary-dark">Home</Link>
-              <Link to="/about" className="hover:text-primary-light dark:hover:text-primary-dark">About</Link>
-              <Link to="/dashboard" className="hover:text-primary-light dark:hover:text-primary-dark">Dashboard</Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              {accessToken ? (
-                <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Logout</button>
-              ) : (
-                <>
-                  <Link to="/login" className="hover:text-primary-light dark:hover:text-primary-dark">Login</Link>
-                  <Link to="/signup" className="bg-primary-light dark:bg-primary-dark hover:opacity-90 text-white px-4 py-2 rounded">Sign Up</Link>
-                </>
-              )}
-              <ThemeToggle />
-            </div>
-          </nav>
-        </header>
-        <main className="container mx-auto p-4">
+      <div
+        dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+        className={`${theme} bg-background-light dark:bg-background-dark min-h-screen text-text-light dark:text-text-dark font-sans`}
+      >
+        <Navbar />
+        <main>
           <Routes>
-            {/* Public Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+
+            <Route path="/about" element={<About />}>
+              <Route index element={<OurStory />} />
+              <Route path="our-story" element={<OurStory />} />
+              <Route path="vision-values" element={<VisionValues />} />
+              <Route path="leadership" element={<Leadership />} />
+              <Route path="accreditations" element={<Accreditations />} />
+            </Route>
+
+            <Route path="/academics" element={<Academics />}>
+              <Route index element={<Curriculum />} />
+              <Route path="curriculum" element={<Curriculum />} />
+              <Route path="programs" element={<Programs />} />
+              <Route path="calendar" element={<Calendar />} />
+            </Route>
+
+            <Route path="/admissions" element={<Admissions />}>
+              <Route index element={<Process />} />
+              <Route path="process" element={<Process />} />
+              <Route path="criteria" element={<Criteria />} />
+              <Route path="tuition" element={<Tuition />} />
+              <Route path="apply" element={<Apply />} />
+            </Route>
+
+            <Route path="/campus" element={<Campus />}>
+              <Route index element={<VirtualTour />} />
+              <Route path="virtual-tour" element={<VirtualTour />} />
+              <Route path="facilities" element={<Facilities />} />
+            </Route>
+
+            <Route path="/students-parents" element={<StudentsParents />}>
+              <Route index element={<Portal />} />
+              <Route path="portal" element={<Portal />} />
+              <Route path="resources" element={<ParentResources />} />
+              <Route path="pta" element={<PTA />} />
+            </Route>
+
+            <Route path="/faculty-staff" element={<FacultyStaff />}>
+              <Route index element={<Profiles />} />
+              <Route path="profiles" element={<Profiles />} />
+              <Route path="careers" element={<Careers />} />
+            </Route>
+
+            <Route path="/news-events" element={<NewsEvents />}>
+              <Route index element={<News />} />
+              <Route path="news" element={<News />} />
+              <Route path="calendar" element={<EventCalendar />} />
+              <Route path="blog" element={<Blog />} />
+            </Route>
+
+            <Route path="/resources" element={<ResourcesDownloads />}>
+              <Route index element={<Forms />} />
+              <Route path="forms" element={<Forms />} />
+              <Route path="policies" element={<Policies />} />
+              <Route path="downloads" element={<Downloads />} />
+            </Route>
+
+            <Route path="/alumni" element={<Alumni />}>
+              <Route index element={<Network />} />
+              <Route path="network" element={<Network />} />
+              <Route path="success-stories" element={<SuccessStories />} />
+              <Route path="events" element={<AlumniEvents />} />
+            </Route>
+
+            <Route path="/contact" element={<Contact />}>
+              <Route index element={<Details />} />
+              <Route path="details" element={<Details />} />
+              <Route path="map" element={<Map />} />
+              <Route path="inquiry" element={<Inquiry />} />
+            </Route>
+
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
-
-            {/* Protected Routes */}
-            <Route
-              path="/dashboard"
-              element={
-                <Protect>
-                  <Dashboard />
-                </Protect>
-              }
-            />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

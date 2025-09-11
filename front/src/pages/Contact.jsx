@@ -4,22 +4,21 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const Contact = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/contact/details', text: { ar: 'تفاصيل الاتصال', fr: 'Coordonnées', en: 'Contact Details' } },
+    { to: '/contact/map', text: { ar: 'الخريطة', fr: 'Carte', en: 'Map' } },
+    { to: '/contact/inquiry', text: { ar: 'نموذج الاستفسار', fr: 'Formulaire de demande', en: 'Inquiry Form' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'اتصل بنا' : currentLanguage === 'fr' ? 'Contactez-nous' : 'Contact Us'}
+        subtitle={currentLanguage === 'ar' ? 'نحن هنا للمساعدة' : currentLanguage === 'fr' ? 'Nous sommes là pour vous aider' : 'We are here to help'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +45,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Contact;

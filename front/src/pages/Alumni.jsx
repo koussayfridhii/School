@@ -4,22 +4,21 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const Alumni = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/alumni/network', text: { ar: 'شبكة الخريجين', fr: 'Réseau des anciens', en: 'Alumni Network' } },
+    { to: '/alumni/success-stories', text: { ar: 'قصص النجاح', fr: 'Histoires de réussite', en: 'Success Stories' } },
+    { to: '/alumni/events', text: { ar: 'الأحداث', fr: 'Événements', en: 'Events' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'الخريجون' : currentLanguage === 'fr' ? 'Anciens' : 'Alumni'}
+        subtitle={currentLanguage === 'ar' ? 'ابق على اتصال مع مجتمع النصر' : currentLanguage === 'fr' ? 'Restez connecté avec la communauté Al Nasser' : 'Stay connected with the Al Nasser community'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +45,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Alumni;

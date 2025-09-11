@@ -4,22 +4,21 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const NewsEvents = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/news-events/news', text: { ar: 'الأخبار', fr: 'Nouvelles', en: 'News' } },
+    { to: '/news-events/calendar', text: { ar: 'تقويم الأحداث', fr: 'Calendrier des événements', en: 'Event Calendar' } },
+    { to: '/news-events/blog', text: { ar: 'المدونة', fr: 'Blog', en: 'Blog' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'الأخبار والأحداث' : currentLanguage === 'fr' ? 'Nouvelles & Événements' : 'News & Events'}
+        subtitle={currentLanguage === 'ar' ? 'ابق على اطلاع على آخر المستجدات في مجتمعنا' : currentLanguage === 'fr' ? 'Restez à jour sur les dernières nouvelles de notre communauté' : 'Stay up to date with the latest in our community'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +45,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default NewsEvents;
