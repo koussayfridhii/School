@@ -9,12 +9,12 @@ const Home = () => {
   const currentLanguage = useSelector(selectLanguage);
 
   return (
-    <div>
+    <main className="flex-grow">
       <Hero
         title={currentLanguage === 'ar' ? 'مرحباً بكم في مدارس النصر الخاصة' : currentLanguage === 'fr' ? 'Bienvenue aux Écoles Privées Al Nasser' : 'Welcome to Al Nasser Private Schools'}
         subtitle={currentLanguage === 'ar' ? 'نحو مستقبل مشرق' : currentLanguage === 'fr' ? 'Vers un avenir brillant' : 'Towards a Bright Future'}
       />
-      <div className="container mx-auto p-4 grid md:grid-cols-3 gap-4">
+      <div className="container mx-auto py-12 px-4 grid md:grid-cols-3 gap-8">
         <Card>
           <CardHeader>
             <h2 className="text-xl font-bold">{currentLanguage === 'ar' ? 'رسالتنا' : currentLanguage === 'fr' ? 'Notre Mission' : 'Our Mission'}</h2>
@@ -42,7 +42,7 @@ const Home = () => {
           </CardBody>
         </Card>
       </div>
-    </div>
+    </main>
   );
 };
 

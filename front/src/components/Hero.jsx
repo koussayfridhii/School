@@ -5,11 +5,11 @@ const Hero = ({ title, subtitle, backgroundImage }) => {
 
   return (
     <div
-      className="bg-primary-light dark:bg-primary-dark text-white p-12 text-center bg-cover bg-center"
+      className="bg-primary text-white p-20 text-center bg-cover bg-center"
       style={style}
     >
-      <h1 className="text-4xl font-bold mb-2">{title}</h1>
-      <p className="text-xl">{subtitle}</p>
+      <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+      <p className="text-xl md:text-2xl">{subtitle}</p>
     </div>
   );
 };

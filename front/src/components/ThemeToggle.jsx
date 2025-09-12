@@ -22,7 +22,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={handleToggle}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+      className="p-2 rounded-full bg-neutral-200 dark:bg-neutral-700 text-text-light dark:text-text-dark"
     >
       {theme === 'light' ? '🌙' : '☀️'}
     </button>

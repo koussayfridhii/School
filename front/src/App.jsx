@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectLanguage } from './store/languageSlice';
-import { selectTheme } from './store/themeSlice';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -58,7 +57,6 @@ import { useEffect } from 'react';
 
 function App() {
   const currentLanguage = useSelector(selectLanguage);
-  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     document.documentElement.lang = currentLanguage;
@@ -68,11 +66,10 @@ function App() {
     <Router>
       <div
         dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
-        className={`${theme} bg-background-light dark:bg-background-dark min-h-screen text-text-light dark:text-text-dark font-sans`}
+        className="flex flex-col min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans"
       >
         <Navbar />
-        <main>
-          <Routes>
+        <Routes>
             <Route path="/" element={<Home />} />
 
             <Route path="/about" element={<About />}>
@@ -147,8 +144,7 @@ function App() {
 
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
-          </Routes>
-        </main>
+        </Routes>
         <Footer />
       </div>
     </Router>

@@ -19,11 +19,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
+    <footer className="bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300">
       <div className="container mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-bold mb-4 text-primary-light dark:text-primary-dark">
+            <h3 className="text-lg font-bold mb-4 text-primary">
               {currentLanguage === "ar" ? "مدارس النصر الخاصة" : currentLanguage === "fr" ? "Écoles Privées Al Nasser" : "Al Nasser Private Schools"}
             </h3>
             <p>
@@ -37,7 +37,7 @@ const Footer = () => {
             <ul>
               {quickLinks.map(link => (
                 <li key={link.to}>
-                  <Link to={link.to} className="hover:text-primary-light dark:hover:text-primary-dark">
+                  <Link to={link.to} className="hover:text-primary">
                     {link.text[currentLanguage]}
                   </Link>
                 </li>
@@ -51,7 +51,7 @@ const Footer = () => {
             <ul>
               {socialLinks.map(link => (
                 <li key={link.text}>
-                  <a href={link.href} className="hover:text-primary-light dark:hover:text-primary-dark">
+                  <a href={link.href} className="hover:text-primary">
                     {link.text}
                   </a>
                 </li>
@@ -59,7 +59,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="text-center mt-8 border-t border-gray-200 dark:border-gray-700 pt-4">
+        <div className="text-center mt-8 border-t border-neutral-200 dark:border-neutral-700 pt-4">
           <p>&copy; {new Date().getFullYear()} {currentLanguage === "ar" ? "مدارس النصر الخاصة. جميع الحقوق محفوظة." : currentLanguage === "fr" ? "Écoles Privées Al Nasser. Tous droits réservés." : "Al Nasser Private Schools. All Rights Reserved."}</p>
         </div>
       </div>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useLogin } from '../hooks/useAuth.js';
 import { useNavigate, Link } from 'react-router-dom';
+import Card, { CardBody, CardHeader } from '../components/Card';
+import Input from '../components/Input';
+import Button from '../components/Button';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -18,38 +21,48 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="p-8 bg-white dark:bg-gray-800 shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-        <div className="mb-4">
-          <label className="block mb-1">Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-2 border rounded bg-gray-200 dark:bg-gray-700"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded bg-gray-200 dark:bg-gray-700"
-            required
-          />
-        </div>
-        <button type="submit" disabled={isLoading} className="w-full bg-primary-light dark:bg-primary-dark text-white p-2 rounded">
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-        {error && <p className="text-red-500 mt-4">{error.response?.data?.message || 'An error occurred'}</p>}
-        <p className="mt-4 text-center">
-          Don't have an account? <Link to="/signup" className="text-primary-light dark:text-primary-dark hover:underline">Sign Up</Link>
-        </p>
-      </form>
-    </div>
+    <main className="flex-grow flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <Card>
+          <CardHeader>
+            <h2 className="text-2xl font-bold text-center">Login</h2>
+          </CardHeader>
+          <CardBody>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label htmlFor="username" className="block mb-2 text-sm font-medium text-text-light dark:text-text-dark">Username</label>
+                <Input
+                  id="username"
+                  name="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-text-light dark:text-text-dark">Password</label>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <Button type="submit" disabled={isLoading} className="w-full">
+                {isLoading ? 'Logging in...' : 'Login'}
+              </Button>
+              {error && <p className="text-red-500 mt-4 text-center">{error.response?.data?.message || 'An error occurred'}</p>}
+              <p className="mt-6 text-center text-sm">
+                Don't have an account? <Link to="/signup" className="text-primary hover:underline">Sign Up</Link>
+              </p>
+            </form>
+          </CardBody>
+        </Card>
+      </div>
+    </main>
   );
 };
 

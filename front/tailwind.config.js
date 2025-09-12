@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import colors from 'tailwindcss/colors';
+
 export default {
   content: [
     "./index.html",
@@ -8,23 +10,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          light: '#3b82f6', // blue-500
-          dark: '#60a5fa', // blue-400
-        },
-        secondary: {
-          light: '#6b7280', // gray-500
-          dark: '#9ca3af', // gray-400
-        },
+        primary: '#2563eb',
+        secondary: '#9333ea',
+        accent: '#f59e0b',
+        neutral: colors.gray,
         background: {
-          light: '#ffffff',
-          dark: '#1a202c',
+          light: '#f9fafb', // gray-50
+          dark: '#111827',  // gray-900
         },
         text: {
           light: '#1f2937', // gray-800
-          dark: '#f7fafc', // gray-100
+          dark: '#f9fafb',  // gray-50
         }
-      }
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],
