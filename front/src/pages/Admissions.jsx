@@ -4,22 +4,22 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const Admissions = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/admissions/process', text: { ar: 'العملية', fr: 'Processus', en: 'Process' } },
+    { to: '/admissions/criteria', text: { ar: 'المعايير', fr: 'Critères', en: 'Criteria' } },
+    { to: '/admissions/tuition', text: { ar: 'الرسوم الدراسية', fr: 'Frais de scolarité', en: 'Tuition & Fees' } },
+    { to: '/admissions/apply', text: { ar: 'قدم الآن', fr: 'Postulez maintenant', en: 'Apply Now' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'القبول' : currentLanguage === 'fr' ? 'Admissions' : 'Admissions'}
+        subtitle={currentLanguage === 'ar' ? 'انضم إلى مجتمعنا المدرسي' : currentLanguage === 'fr' ? 'Rejoignez notre communauté scolaire' : 'Join our school community'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +46,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Admissions;

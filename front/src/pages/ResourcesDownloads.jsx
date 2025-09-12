@@ -4,22 +4,21 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const ResourcesDownloads = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/resources/forms', text: { ar: 'مكتبة النماذج', fr: 'Bibliothèque de formulaires', en: 'Forms Library' } },
+    { to: '/resources/policies', text: { ar: 'السياسات', fr: 'Politiques', en: 'Policies' } },
+    { to: '/resources/downloads', text: { ar: 'التنزيلات', fr: 'Téléchargements', en: 'Downloads' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'الموارد والتنزيلات' : currentLanguage === 'fr' ? 'Ressources & Téléchargements' : 'Resources & Downloads'}
+        subtitle={currentLanguage === 'ar' ? 'ابحث عن النماذج والمستندات المهمة' : currentLanguage === 'fr' ? 'Trouvez des formulaires et documents importants' : 'Find important forms and documents'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +45,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default ResourcesDownloads;

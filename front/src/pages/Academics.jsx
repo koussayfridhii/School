@@ -4,22 +4,21 @@ import { useSelector } from 'react-redux';
 import { selectLanguage } from '../store/languageSlice';
 import Hero from '../components/Hero';
 
-const About = () => {
+const Academics = () => {
   const currentLanguage = useSelector(selectLanguage);
   const location = useLocation();
 
   const subNavLinks = [
-    { to: '/about/our-story', text: { ar: 'قصتنا', fr: 'Notre Histoire', en: 'Our Story' } },
-    { to: '/about/vision-values', text: { ar: 'الرؤية والقيم', fr: 'Vision & Valeurs', en: 'Vision & Values' } },
-    { to: '/about/leadership', text: { ar: 'القيادة', fr: 'Direction', en: 'Leadership' } },
-    { to: '/about/accreditations', text: { ar: 'الاعتمادات', fr: 'Accréditations', en: 'Accreditations' } },
+    { to: '/academics/curriculum', text: { ar: 'نظرة عامة على المنهج', fr: 'Aperçu du curriculum', en: 'Curriculum Overview' } },
+    { to: '/academics/programs', text: { ar: 'البرامج', fr: 'Programmes', en: 'Programs' } },
+    { to: '/academics/calendar', text: { ar: 'التقويم الأكاديمي', fr: 'Calendrier académique', en: 'Academic Calendar' } },
   ];
 
   return (
     <div>
       <Hero
-        title={currentLanguage === 'ar' ? 'من نحن' : currentLanguage === 'fr' ? 'À propos de nous' : 'About Us'}
-        subtitle={currentLanguage === 'ar' ? 'تعرف على تاريخنا ورسالتنا' : currentLanguage === 'fr' ? 'Découvrez notre histoire et notre mission' : 'Learn about our history and mission'}
+        title={currentLanguage === 'ar' ? 'الأكاديميون' : currentLanguage === 'fr' ? 'Académiques' : 'Academics'}
+        subtitle={currentLanguage === 'ar' ? 'اكتشف نهجنا التعليمي' : currentLanguage === 'fr' ? 'Découvrez notre approche éducative' : 'Discover our educational approach'}
       />
       <div className="container mx-auto p-4 flex flex-col md:flex-row">
         <aside className="w-full md:w-1/4 p-4">
@@ -46,4 +45,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Academics;

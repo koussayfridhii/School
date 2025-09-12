@@ -2,16 +2,19 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import authReducer from './authSlice.js';
+import themeReducer from './themeSlice.js';
+import languageReducer from './languageSlice.js';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  // ...add other reducers here if you have them
+  theme: themeReducer,
+  language: languageReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'], // only persist the 'auth' slice
+  whitelist: ['auth', 'theme', 'language'], // persist auth, theme, and language slices
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

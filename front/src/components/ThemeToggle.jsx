@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTheme, toggleTheme } from '../store/themeSlice';
 
 const ThemeToggle = () => {
-  // Initialize theme from localStorage or default to 'light'
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
 
-  // Effect to apply the theme to the root element
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {
@@ -12,16 +13,15 @@ const ThemeToggle = () => {
     } else {
       root.classList.remove('dark');
     }
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  const handleToggle = () => {
+    dispatch(toggleTheme());
   };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={handleToggle}
       className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
     >
       {theme === 'light' ? '🌙' : '☀️'}
