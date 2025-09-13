@@ -1,27 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-background: var(--color-background-val);
+  --color-default: var(--color-default-val);
+  --color-muted: var(--color-muted-val);
+  --color-primary: var(--color-primary-val);
+  --color-secondary: var(--color-secondary-val);
+  --color-accent: var(--color-accent-val);
+}
 
 :root {
-  --color-background: 249 250 251; /* gray-50 */
-  --color-default: 31 41 55;      /* gray-800 */
-  --color-muted: 107 114 128;     /* gray-500 */
-  --color-primary: 37 99 235;     /* blue-600 */
-  --color-secondary: 147 51 234;  /* purple-600 */
-  --color-accent: 245 158 11;     /* amber-500 */
+  --color-background-val: oklch(from var(--color-gray-50) l c h);
+  --color-default-val: oklch(from var(--color-gray-800) l c h);
+  --color-muted-val: oklch(from var(--color-gray-500) l c h);
+  --color-primary-val: oklch(from var(--color-blue-600) l c h);
+  --color-secondary-val: oklch(from var(--color-purple-600) l c h);
+  --color-accent-val: oklch(from var(--color-amber-500) l c h);
 }
 
 .dark {
-  --color-background: 17 24 39;      /* gray-900 */
-  --color-default: 249 250 251;    /* gray-50 */
-  --color-muted: 156 163 175;    /* gray-400 */
-  --color-primary: 59 130 246;    /* blue-500 */
-  --color-secondary: 168 85 247;   /* purple-500 */
-  --color-accent: 234 179 8;      /* amber-400 */
+  --color-background-val: oklch(from var(--color-gray-900) l c h);
+  --color-default-val: oklch(from var(--color-gray-50) l c h);
+  --color-muted-val: oklch(from var(--color-gray-400) l c h);
+  --color-primary-val: oklch(from var(--color-blue-500) l c h);
+  --color-secondary-val: oklch(from var(--color-purple-500) l c h);
+  --color-accent-val: oklch(from var(--color-amber-400) l c h);
 }
 
 body {
-  @apply bg-background text-color-default;
+  @apply bg-background text-default font-sans;
 }
