@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-background: 249 250 251; /* gray-50 */
+  --color-default: 31 41 55;      /* gray-800 */
+  --color-muted: 107 114 128;     /* gray-500 */
+  --color-primary: 37 99 235;     /* blue-600 */
+  --color-secondary: 147 51 234;  /* purple-600 */
+  --color-accent: 245 158 11;     /* amber-500 */
+}
+
+.dark {
+  --color-background: 17 24 39;      /* gray-900 */
+  --color-default: 249 250 251;    /* gray-50 */
+  --color-muted: 156 163 175;    /* gray-400 */
+  --color-primary: 59 130 246;    /* blue-500 */
+  --color-secondary: 168 85 247;   /* purple-500 */
+  --color-accent: 234 179 8;      /* amber-400 */
+}
+
 body {
-  @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark;
+  @apply bg-background text-color-default;
 }

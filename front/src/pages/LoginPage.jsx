@@ -30,7 +30,7 @@ const LoginPage = () => {
           <CardBody>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label htmlFor="username" className="block mb-2 text-sm font-medium text-text-light dark:text-text-dark">Username</label>
+                <label htmlFor="username" className="block mb-2 text-sm font-medium text-color-default">Username</label>
                 <Input
                   id="username"
                   name="username"
@@ -41,7 +41,7 @@ const LoginPage = () => {
                 />
               </div>
               <div className="mb-6">
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-text-light dark:text-text-dark">Password</label>
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-color-default">Password</label>
                 <Input
                   id="password"
                   name="password"

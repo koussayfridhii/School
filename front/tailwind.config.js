@@ -1,32 +1,26 @@
 /** @type {import('tailwindcss').Config} */
-import colors from 'tailwindcss/colors';
+const defaultTheme = require('tailwindcss/defaultTheme');
 
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: 'class', // Enable class-based dark mode
+  darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        primary: '#2563eb',
-        secondary: '#9333ea',
-        accent: '#f59e0b',
-        neutral: colors.gray,
-        background: {
-          light: '#f9fafb', // gray-50
-          dark: '#111827',  // gray-900
-        },
-        text: {
-          light: '#1f2937', // gray-800
-          dark: '#f9fafb',  // gray-50
-        }
-      },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        'color-default': 'rgb(var(--color-default) / <alpha-value>)',
+        'color-muted': 'rgb(var(--color-muted) / <alpha-value>)',
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
       },
     },
   },
   plugins: [],
-}
+};

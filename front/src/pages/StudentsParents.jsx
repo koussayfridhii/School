@@ -29,7 +29,7 @@ const StudentsParents = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className={`block py-2 px-4 rounded-lg transition-colors ${location.pathname === link.to ? 'bg-primary text-white' : 'hover:bg-neutral-200 dark:hover:bg-neutral-700'}`}
+                    className={`block py-2 px-4 rounded-lg transition-colors ${location.pathname === link.to ? 'bg-primary text-white' : 'hover:bg-color-muted/10'}`}
                   >
                     {link.text[currentLanguage]}
                   </Link>

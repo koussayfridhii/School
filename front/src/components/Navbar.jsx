@@ -29,7 +29,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-background-light dark:bg-background-dark shadow-lg">
+    <nav className="bg-background shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="text-2xl font-bold text-primary">
@@ -39,7 +39,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-4">
             {navLinks.slice(0, 5).map(link => (
-              <Link key={link.to} to={link.to} className="text-text-light dark:text-text-dark hover:text-primary">
+              <Link key={link.to} to={link.to} className="text-color-default hover:text-primary">
                 {link.text[currentLanguage]}
               </Link>
             ))}
@@ -47,20 +47,20 @@ const Navbar = () => {
           <div className="flex items-center space-x-2">
             <ThemeToggle />
             <div className="relative">
-              <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} className="p-2 rounded-full bg-neutral-200 dark:bg-neutral-700 text-text-light dark:text-text-dark">
+              <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} className="p-2 rounded-full bg-background hover:bg-color-muted/10 text-color-default">
                 {currentLanguage.toUpperCase()}
               </button>
               {isLangMenuOpen && (
-                <div className="absolute right-0 mt-2 w-24 bg-white dark:bg-neutral-800 rounded-md shadow-lg">
-                  <button onClick={() => { handleLanguageChange('ar'); setIsLangMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700">AR</button>
-                  <button onClick={() => { handleLanguageChange('en'); setIsLangMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700">EN</button>
-                  <button onClick={() => { handleLanguageChange('fr'); setIsLangMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700">FR</button>
+                <div className="absolute right-0 mt-2 w-24 bg-background rounded-md shadow-lg border border-color-muted/10">
+                  <button onClick={() => { handleLanguageChange('ar'); setIsLangMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-color-default hover:bg-color-muted/10">AR</button>
+                  <button onClick={() => { handleLanguageChange('en'); setIsLangMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-color-default hover:bg-color-muted/10">EN</button>
+                  <button onClick={() => { handleLanguageChange('fr'); setIsLangMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-color-default hover:bg-color-muted/10">FR</button>
                 </div>
               )}
             </div>
             <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {/* Icon for menu */}
-              <svg className="w-6 h-6 text-text-light dark:text-text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              <svg className="w-6 h-6 text-color-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
           </div>
         </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
       <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navLinks.map(link => (
-            <Link key={link.to} to={link.to} className="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:text-white hover:bg-primary">
+            <Link key={link.to} to={link.to} className="block px-3 py-2 rounded-md text-base font-medium text-color-default hover:text-white hover:bg-primary">
               {link.text[currentLanguage]}
             </Link>
           ))}

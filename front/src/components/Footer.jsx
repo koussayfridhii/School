@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300">
+    <footer className="bg-background text-color-muted">
       <div className="container mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -31,7 +31,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">
+            <h3 className="text-lg font-bold mb-4 text-color-default">
               {currentLanguage === "ar" ? "روابط سريعة" : currentLanguage === "fr" ? "Liens rapides" : "Quick Links"}
             </h3>
             <ul>
@@ -45,7 +45,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">
+            <h3 className="text-lg font-bold mb-4 text-color-default">
               {currentLanguage === "ar" ? "تابعنا" : currentLanguage === "fr" ? "Suivez-nous" : "Follow Us"}
             </h3>
             <ul>
@@ -59,7 +59,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="text-center mt-8 border-t border-neutral-200 dark:border-neutral-700 pt-4">
+        <div className="text-center mt-8 border-t border-color-muted/20 pt-4">
           <p>&copy; {new Date().getFullYear()} {currentLanguage === "ar" ? "مدارس النصر الخاصة. جميع الحقوق محفوظة." : currentLanguage === "fr" ? "Écoles Privées Al Nasser. Tous droits réservés." : "Al Nasser Private Schools. All Rights Reserved."}</p>
         </div>
       </div>
